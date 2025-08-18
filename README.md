@@ -1,12 +1,61 @@
-# React + Vite
+# 🌦️ React Weather App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and responsive weather application built with **React** and the **Open-Meteo API** and reverse geocoded through **location Iq API**.  
+It shows current weather, hourly forecast, and daily forecast with a clean UI.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
+- 🌍 Search weather by city
+- 📍 Get current location weather
+- 🌤️ Current conditions (temperature, humidity, wind, etc.)
+- ⏰ Hourly and daily forecast
+- 📱 Responsive design for mobile & desktop
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tech Stack
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- [Open-Meteo API](https://open-meteo.com/)
+- [Location Iq API](https://docs.locationiq.com/reference/reverse-api)
+
+---
+
+## 📦 Installation
+
+Clone the repo and install dependencies:
+
+```bash
+git clone https://github.com/roshan-soni-1/React-weather-app.git
+cd React-weather-app
+npm install
+
+
+---
+
+▶️ Run the App
+
+npm run dev
+
+Then open http://localhost:5173 in your browser.
+
+
+---
+
+🔑 Environment Variables
+
+Create a .env file in the root folder:
+
+VITE_WEATHER_API_KEY=your_api_key_here
+
+
+---
+
+```
+```bash
+📜 License
+
+This project is licensed under the MIT License.
+
+---
