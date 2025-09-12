@@ -64,7 +64,7 @@ const Searchbar = ({ onLocationSelect, status,place,location }) => {
   // --- Handle current location ---
   const handleGeo = ({place}) => {
     if (!navigator.geolocation) {
-      alert("Geolocation not supported.");
+      //alert("Geolocation not supported.");
       return;
     }
     handleStatus("Getting your location...");
