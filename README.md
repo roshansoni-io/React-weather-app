@@ -1,95 +1,102 @@
-# 🌦️ React Weather App
+<div align="center">
+  <img src="./public/logo.svg" width="80" height="80" alt="Aether Logo">
+  
+  # AETHER WEATHER
+  ### Atmospheric Intelligence for the Modern Desktop
 
-![React](https://img.shields.io/badge/React-18-blue?logo=react) ![Vite](https://img.shields.io/badge/Vite-5-yellow?logo=vite) ![License](https://img.shields.io/badge/License-MIT-green)
+  [![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev/)
+  [![Tailwind](https://img.shields.io/badge/Tailwind_v4-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+  [![Framer Motion](https://img.shields.io/badge/Framer_Motion-FF0055?style=flat-square&logo=framer&logoColor=white)](https://www.framer.com/motion/)
+  [![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
 
-A **simple and responsive weather application** built with **React**, **Vite**, and the **Open-Meteo API**, with location data via **LocationIQ API**.  
-It shows current weather, hourly forecast, and daily forecast with a clean and modern UI.
+  [Live Experience](https://react-weather-app-three-dusky.vercel.app/) • [Report Bug](https://github.com/roshan-soni-1/React-weather-app/issues) • [Request Feature](https://github.com/roshan-soni-1/React-weather-app/issues)
+
+  ---
+</div>
+
+## Design Philosophy
+Aether is a minimalist weather dashboard designed to prioritize clarity over visual clutter. Utilizing a Bento-style architecture, it organizes complex meteorological data into distinct, digestible tiles. The aesthetic focuses on editorial typography, high-contrast values, and organic textures.
+
+### Key Features
+- **Sophisticated UI:** A deep color palette (Indigo, Slate, Rose) paired with subtle grain textures.
+- **Bento Architecture:** Logical grouping of data for instant situational awareness.
+- **Data Visualization:** Interactive 24-hour temperature trends powered by Recharts.
+- **Fluid Motion:** Purposeful entry transitions and layout animations via Framer Motion.
+- **Precision Telemetry:** Real-time reverse geocoding via Nominatim/OSM for accurate location tracking.
 
 ---
 
-## 🚀 Features
-- 🌍 Search weather by city
-- 📍 Get weather for your current location
-- 🌤️ Current conditions: temperature, humidity, wind, etc.
-- ⏰ Hourly & daily forecast
-- 📱 Fully responsive design for mobile and desktop
+## Technical Stack
+| Category | Technology |
+| :--- | :--- |
+| **Core** | React 19, Tailwind CSS v4 |
+| **Visualization** | Recharts, Lucide Icons |
+| **Animation** | Framer Motion |
+| **Build & Security** | Vite, Terser, CSP Hardening |
 
 ---
 
-## 🛠️ Tech Stack
-- **Frontend:** [React](https://react.dev/), [Vite](https://vitejs.dev/)
-- **APIs:** [Open-Meteo API](https://open-meteo.com/), [LocationIQ API](https://docs.locationiq.com/reference/reverse-api)
-- **Styling:** CSS / your choice of framework
+## Getting Started
 
----
-
-## 📦 Installation
-
-1. Clone the repository:
+### 1. Installation
 ```bash
 git clone https://github.com/roshan-soni-1/React-weather-app.git
-```
-
-2. Navigate into the project folder:
-```bash
 cd React-weather-app
 ```
 
-3. Install dependencies:
+### 2. Development
 ```bash
 npm install
-```
-
----
-
-## ▶️ Run the App
-
-Start the development server:
-```bash
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173) in your browser.
-
----
-
-## 🔑 Environment Variables
-
-Create a \`.env\` file in the root folder and add your API key(s):
-```txt
-VITE_WEATHER_API_KEY=your_api_key_here
+### 3. Build for Production
+```bash
+npm run build
 ```
 
 ---
 
-## 📸 Screenshots
-
-<p align="center">
-  <img src="./screenshots/Search.png" alt="Search" width="340" style="border-radius:10px"/>
-  <img src="./screenshots/now.jpg" alt="Now" width="340" style="border-radius:10px"/>
-</p>
-
-<p align="center">
-  <img src="./screenshots/hourly.jpg" alt="Hourly Forecast" width="340" style="border-radius:10px"/>
-  <img src="./screenshots/daily.jpg" alt="Daily Forecast" width="340" style="border-radius:10px"/>
-</p>
----
-
-## 🌐 Live Demo
-
-Check out the live app here:  
-[demo app](https://react-weather-app-three-dusky.vercel.app/).
+## Security & Performance
+Aether is optimized for security and delivery speed:
+- **Content Security Policy:** Strict CSP headers to prevent unauthorized script execution.
+- **Intelligent Chunking:** Heavy libraries are split into separate modules for optimized browser caching.
+- **Production Stripping:** Automated removal of console logs and debuggers during the build process.
+- **Privacy First:** Keyless location services to ensure user anonymity and zero tracking.
 
 ---
 
-## 🤝 Contributing
+## Interface Preview
 
-Contributions, issues, and feature requests are welcome!  
-Feel free to **fork** the repo and submit a PR.
+<div align="center">
+  <table border="0">
+    <tr>
+      <td><img src="./screenshots/Search.png" width="350" style="border-radius:16px" alt="Search"></td>
+      <td><img src="./screenshots/now.jpg" width="350" style="border-radius:16px" alt="Dashboard"></td>
+    </tr>
+    <tr>
+      <td align="center">Minimal Search Interface</td>
+      <td align="center">Primary Bento Dashboard</td>
+    </tr>
+    <tr>
+      <td><img src="./screenshots/hourly.jpg" width="350" style="border-radius:16px" alt="Hourly"></td>
+      <td><img src="./screenshots/daily.jpg" width="350" style="border-radius:16px" alt="Daily"></td>
+    </tr>
+    <tr>
+      <td align="center">24h Temperature Timeline</td>
+      <td align="center">Extended 7-Day Outlook</td>
+    </tr>
+  </table>
+</div>
 
 ---
 
-## 📜 License
+## License
+Distributed under the MIT License. See `LICENSE` for more information.
 
-This project is licensed under the **MIT License**.
-EOF
+<div align="center">
+  <br>
+  Built by <b>Roshan Soni</b>
+  <br>
+  <i>Translating meteorological data into atmospheric experiences.</i>
+</div>

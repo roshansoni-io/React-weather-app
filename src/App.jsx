@@ -9,9 +9,8 @@ import Footer from "./components/footer.jsx";
 
 function App() {
   const [location, setLocation] = useState(null);
-  const [status, setStatus] = useState("");
+  const [, setStatus] = useState("");
 
-  // 🔹 Load last location from localStorage on mount
   useEffect(() => {
     const saved = localStorage.getItem("lastLocation");
     if (saved) {
@@ -19,26 +18,36 @@ function App() {
     }
   }, []);
 
-  // 🔹 When location changes, save it
   const handleLocationSelect = (loc) => {
     setLocation(loc);
     localStorage.setItem("lastLocation", JSON.stringify(loc));
-    setStatus(""); // clear status
+    setStatus("");
   };
 
-  const { meta, now, daily, hourly, loading,place} = useWeather(location);
+  const { meta, now, daily, hourly, place } = useWeather(location);
 
   return (
-    <>
-      <Searchbar onLocationSelect={handleLocationSelect} status={setStatus} className="app-header"/>
-      <div className="container">
-        <LocationInfo location={location} meta={meta} place={place} now={now} />
-        <NowCard now={now} place={place} meta={meta} daily={daily} />
-        <HourlyCard hourly={hourly} />
-        <DailyCard daily={daily} />
-      </div>
+    <div className="min-h-screen pb-12">
+      <Searchbar onLocationSelect={handleLocationSelect} status={setStatus} />
+      
+      <main className="max-w-5xl mx-auto px-6 py-10 grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        {/* Main Content Area: Left/Top */}
+        <div className="lg:col-span-8 space-y-8">
+          <NowCard now={now} daily={daily} />
+          <HourlyCard hourly={hourly} />
+        </div>
+
+        {/* Sidebar: Right/Bottom */}
+        <div className="lg:col-span-4 space-y-8">
+          <LocationInfo location={location} meta={meta} place={place} />
+          <DailyCard daily={daily} />
+        </div>
+
+      </main>
+      
       <Footer />
-    </>
+    </div>
   );
 }
 

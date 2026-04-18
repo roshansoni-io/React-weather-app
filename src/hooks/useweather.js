@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
 const WX_API = "https://api.open-meteo.com/v1/forecast";
-const apiKey = import.meta.env.VITE_LOCATIONIQ_KEY;
 
 export default function useWeather(location) {
   const [meta, setMeta] = useState(null);
@@ -66,7 +65,8 @@ export default function useWeather(location) {
           sunset: data.daily.sunset,
         });
       } catch (err) {
-        console.error("Weather fetch failed:", err);
+        // Production: log minimal info
+        if (import.meta.env.DEV) console.error("Weather fetch failed:", err);
       } finally {
         setLoading(false);
       }
@@ -78,14 +78,15 @@ export default function useWeather(location) {
     return () => clearInterval(intervalId);
   }, [location]);
 
-  // ====== Fetch Place (only once per location) ======
+  // ====== Fetch Place via Reverse Geocoding (Open-Meteo or Nominatim) ======
   useEffect(() => {
     if (!location) return;
 
     async function fetchPlace() {
       try {
+        // Use Nominatim (OpenStreetMap) for free reverse geocoding without API key
         const response = await fetch(
-          `https://us1.locationiq.com/v1/reverse?lat=${location.latitude}&lon=${location.longitude}&format=json&accept-language=en&addressdetails=1&normalizeaddress=1&key=${apiKey}`
+          `https://nominatim.openstreetmap.org/reverse?lat=${location.latitude}&lon=${location.longitude}&format=json&accept-language=en`
         );
 
         if (!response.ok) {
@@ -93,23 +94,21 @@ export default function useWeather(location) {
         }
 
         const placeData = await response.json();
+        const addr = placeData.address || {};
+        
         setPlace({
           name: placeData.display_name,
-          road: placeData.address.road,
-          city:
-            placeData.address.city ||
-            placeData.address.town ||
-            placeData.address.village,
-          county: placeData.address.county,
-          state: placeData.address.state,
-          postcode: placeData.address.postcode,
-          country: placeData.address.country,
-          district: placeData.address.state_district,
-          country_code: placeData.address.country_code,
-          test:"test",
+          city: addr.city || addr.town || addr.village || addr.suburb || "Unknown Place",
+          state: addr.state,
+          country: addr.country,
+          country_code: addr.country_code,
         });
       } catch (err) {
         console.error("Place fetch failed:", err);
+        // Fallback to location label if provided
+        if (location.label) {
+            setPlace({ city: location.name || "Unknown", name: location.label });
+        }
       }
     }
 
